@@ -43,6 +43,10 @@ const bookSchema = new mongoose.Schema({
         type: Boolean,
         default: false
     },
+    bookCover:{
+        type:String
+    },
+
     reviews: {
         type: Number,
         default: 0,
@@ -57,8 +61,8 @@ const bookSchema = new mongoose.Schema({
         required: true,
         default: Date.now()
 
-    }
-
+    },
+    
 },
     { timestamps: true });
 

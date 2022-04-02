@@ -6,11 +6,12 @@ const jwt = require("jsonwebtoken")
 const isValid = function (value) {
   if (typeof value == undefined || value == null) return false
   if (typeof value === 'string' && value.trim().length === 0) return false
+  if (typeof value === 'Number' && value.toString().trim().length === 0) return false
   return true
 }
 
 const isValidTitle = function (title) {
-  return ['Mr', 'Mrs', 'Miss','Mast'].indexOf(title) !== -1
+  return ['Mr', 'Mrs', 'Miss'].indexOf(title) !== -1
 }
 
 
@@ -21,7 +22,7 @@ const createUser = async function (req, res) {
     let data = req.body;
     if (!(Object.keys(data).length > 0)) { return res.status(400).send({ status: false, message: "Invalid request Please provide details of an user" }) }
 
-    if (!isValidTitle(data.title)) { return res.status(400).send({ status: false, message: "Title must be:['Mr', 'Mrs', 'Miss','Mast'] " }) }
+    if (!isValidTitle(data.title)) { return res.status(400).send({ status: false, message: "Title must be:['Mr', 'Mrs', 'Miss'] " }) }
 
 
     if (!isValid(data.name)) { return res.status(400).send({ status: false, message: "Name is required" }) }
@@ -57,7 +58,7 @@ const createUser = async function (req, res) {
     }
 
     let savedData = await userModel.create(data)
-  
+
     return res.status(201).send({ status: true, data: savedData })
 
   }
@@ -77,7 +78,7 @@ const login = async function (req, res) {
     let data = req.body
     let email = req.body.email;
     let password = req.body.password;
-    if (!(Object.keys(data).length > 0)) { return res.status(400).send({ status: false, message: "Invalid request Please provide details of an author" }) }
+    if (!(Object.keys(data).length > 0)) { return res.status(400).send({ status: false, message: "Invalid request Please provide details of an User" }) }
 
 
     if (!isValid(email)) { return res.status(400).send({ status: false, message: "Email-Id is required" }) }
