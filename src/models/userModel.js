@@ -31,8 +31,8 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: true,
       match:[/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,15}$/,'Please enter valid Password'],
-      maxlength:8,
-      maxlength:15
+      //maxlength:8,
+      //maxlength:15
     },
     address: {
       street: {

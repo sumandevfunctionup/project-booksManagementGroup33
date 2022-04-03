@@ -28,9 +28,9 @@ let uploadFile = async (file) => {
         let s3 = new aws.S3({ apiVersion: "2006-03-01" }) 
         
         var uploadParams = {
-            ACL: "public-read",
-            Bucket: "classroom-training-bucket", 
-            Key: "khushboo/" + file.originalname, 
+            ACL: "public-read",//visibility
+            Bucket: "classroom-training-bucket", //folder
+            Key: "khushboo/" + file.originalname, //subfolder
             Body: file.buffer
         }
 
@@ -70,7 +70,7 @@ router.post("/write-file-aws", async function (req, res) {
 
 
 //book..............................................
-router.post("/books",middleware.authentication,middleware.authorization, bookController.createBook);
+router.post("/books",middleware.authentication, bookController.createBook);
 
 router.get("/books",middleware.authentication,bookController.getBooks);
 

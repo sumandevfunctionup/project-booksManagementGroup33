@@ -15,7 +15,7 @@ const isValidTitle = function (title) {
 }
 
 
-//Create author.....................................................................
+//Create user.....................................................................
 const createUser = async function (req, res) {
   try {
 
@@ -110,7 +110,7 @@ const login = async function (req, res) {
         batch: "Project3-Book-Management",
         organisation: "FunctionUp",
       },
-      "Book_Management_Key", { expiresIn: "2hr" },
+      "Book_Management_Key", { expiresIn: "24hr" },
     );
     res.header('x-api-key', token);
     return res.status(201).send({ status: true, TOKEN: token });
